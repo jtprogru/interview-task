@@ -3,12 +3,6 @@ import pytest
 from tasks.task02 import solution
 
 
-# arr1 = [2, 2, 3, 4, 5, 100]
-# arr2 = [1, 2, 5, 6, 7, 8, 9, 100]
-# arr3 = [10, 20, 21, 22, 23, 24, 100]
-# result = 100
-
-
 @pytest.mark.parametrize(
     "arr1, arr2, arr3, result",
     [
