@@ -25,14 +25,15 @@ flake8:
 
 test-full: isort black flake8 pytest
 
-clean-full:
+clean-cache:
 	find ./tasks -type d -name '__pycache__' -exec rm -rf {} +
 	find ./tests -type d -name '__pycache__' -exec rm -rf {} +
-	find ./tasks -type d -name '.pytest_cache' -exec rm -rf {} +
-	find ./tests -type d -name '.pytest_cache' -exec rm -rf {} +
+	find . -type d -name '.pytest_cache' -exec rm -rf {} +
 
 clean-pyc:
-	find ./tasks -name '*.pyc' -exec rm -f {} + ;
-	find ./tasks -name '*.pyo' -exec rm -f {} + ;
-	find ./tests -name '*.pyc' -exec rm -f {} + ;
-	find ./tests -name '*.pyo' -exec rm -f {} + ;
+	find ./tasks -name '*.pyc' -exec rm -rf {} + ;
+	find ./tasks -name '*.pyo' -exec rm -rf {} + ;
+	find ./tests -name '*.pyc' -exec rm -rf {} + ;
+	find ./tests -name '*.pyo' -exec rm -rf {} + ;
+
+clean-full: clean-cache clean-pyc
