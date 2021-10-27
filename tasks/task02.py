@@ -29,11 +29,11 @@ def solution(arr1: list, arr2: list, arr3: list) -> int:
     pointer_arr2 = 0
     pointer_arr3 = 0
 
+    if len(arr1) == 0 or len(arr2) == 0 or len(arr3) == 0:
+        return 0
+
     while True:
-        if (
-            arr1[pointer_arr1] == arr2[pointer_arr2]
-            and arr2[pointer_arr2] == arr3[pointer_arr3]
-        ):
+        if arr1[pointer_arr1] == arr2[pointer_arr2] and arr2[pointer_arr2] == arr3[pointer_arr3]:
             return arr1[pointer_arr1]
 
         if arr1[pointer_arr1] > arr2[pointer_arr2]:
