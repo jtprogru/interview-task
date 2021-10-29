@@ -26,7 +26,7 @@ flake8:
 	./venv/bin/python -m flake8 tasks/
 	./venv/bin/python -m flake8 tests/
 
-test-full: isort black flake8 pytest
+test-full: isort black flake8 pytest clean-full
 
 clean-cache:
 	find ./tasks -type d -name '__pycache__' -exec rm -rf {} +
