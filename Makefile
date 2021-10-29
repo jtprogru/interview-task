@@ -5,6 +5,9 @@ SHELL := /bin/bash
 
 default: test-full
 
+venv:
+	python3 -m venv venv && source venv/bin/activate
+
 install-deps: requirements.txt
 	./venv/bin/pip install -r requirements.txt
 
