@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-
+.SILENT:
 .PHONY: default test-full isort clean-pyc clean-full
 
 
