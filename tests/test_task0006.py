@@ -1,6 +1,6 @@
 import pytest
 
-from tasks.task06 import solution
+from tasks.task0006 import solution
 
 
 @pytest.mark.parametrize(
