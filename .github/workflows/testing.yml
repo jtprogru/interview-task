@@ -6,7 +6,7 @@ name: Testing
     branches: [ '*' ]
 
 jobs:
-  build:
+  testing:
 
     runs-on: ubuntu-latest
 
