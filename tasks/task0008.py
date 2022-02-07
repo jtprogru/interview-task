@@ -1,29 +1,46 @@
-from random import randint
+"""
+Задача:
+Дан отсортированный массив целых чисел 'a', целое число 'k' и индекс элемента 'indx'.
 
-# Создание списка,
-# его сортировка по возрастанию
-# и вывод на экран
-a = []
-for i in range(10):
-    a.append(randint(1, 50))
-a.sort()
-print(a)
+Найти:
+Необходимо вернуть в любом порядке 'K' чисел из массива,
+которые являются ближайшими по значению к элементу 'a[index]' .
 
-# искомое число
-value = int(input())
+Пример:
+на вход:
+    a = [10, 15, 20, 50, 55, 78, 91]
+    indx = 2
+    k = 3
 
-mid = len(a) // 2
-low = 0
-high = len(a) - 1
+на выход: [10, 15, 50]
+"""
 
-while a[mid] != value and low <= high:
-    if value > a[mid]:
-        low = mid + 1
-    else:
-        high = mid - 1
-    mid = (low + high) // 2
 
-if low > high:
-    print("No value")
-else:
-    print(f"ID = {mid}")
+def solution(a: list, idx: int, k: int) -> list:
+    elem = a[idx]
+    result = []
+    li = idx - 1
+    ri = idx + 1
+
+    while k > 0:
+        k -= 1
+
+        if li < 0:
+            result.append(a[ri])
+            ri += 1
+        elif ri > (len(a) - 1):
+            result.append(a[li])  # 15, 55
+            li -= 1
+        else:
+            r1 = elem - a[li]  # 20 - 15 = 5
+            r2 = a[ri] - elem  # 50 - 20 = 30
+
+            if r1 > r2:
+                result.append(a[ri])
+                ri += 1
+
+            elif r2 >= r1:
+                result.append(a[li])  # 15, 55
+                li -= 1
+
+    return sorted(result)
