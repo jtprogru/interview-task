@@ -16,5 +16,5 @@ from tasks.task0001 import solution
         ([1], 0),
     ],
 )
-def test_task01_solution(arr, result):
+def test_task0001_solution(arr, result):
     assert solution(arr) == result

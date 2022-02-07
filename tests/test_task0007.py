@@ -45,5 +45,5 @@ from tasks.task0007 import solution
         ),
     ],
 )
-def test_task06_solution(row_count, result):
+def test_task0007_solution(row_count, result):
     assert solution(row_count) == result
