@@ -20,5 +20,5 @@ from tasks.task0002 import solution
         ([1, 2], [1, 2], [0, 2], 2),
     ],
 )
-def test_task02_solution(arr1, arr2, arr3, result):
+def test_task0002_solution(arr1, arr2, arr3, result):
     assert solution(arr1, arr2, arr3) == result
