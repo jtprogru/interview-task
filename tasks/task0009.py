@@ -25,4 +25,3 @@ def solution(a: list, k: int):
         else:
             ri -= 1
     return []
-
