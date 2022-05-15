@@ -14,5 +14,5 @@ from tasks.task0011 import solution
         (8, 6, 792),
     ],
 )
-def test_task0010_solution(m, n, result):
+def test_task0011_solution(m, n, result):
     assert solution(m=m, n=n) == result
