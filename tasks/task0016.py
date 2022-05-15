@@ -55,7 +55,7 @@ def solution(board: List[List[str]]) -> bool:
             e = board[i][j]
             box_index = (i // 3) * 3 + j // 3
 
-            if e == '.':
+            if e == ".":
                 continue
 
             if e in row[i] or e in col[j] or e in box[box_index]:
