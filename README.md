@@ -8,8 +8,7 @@
 [![Donate](https://img.shields.io/badge/-Donate-blue?logo=paypal)](https://paypal.me/jtprog)
 [![Donate](https://img.shields.io/badge/-Donate-blue?logo=patreon)](https://patreon.com/jtprogru)
 
-Задачки, которые мне задают на собеседованиях (решаю их на Python, т.к. пока ничего другого не знаю).
-
+Задачки с собеседований, LeetCode, CodeWars (решаю их на Python)
 
 ## Как запустить
 
