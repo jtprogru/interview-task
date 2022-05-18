@@ -22,8 +22,8 @@ Constraints:
 
 def solution(x: int) -> int:
     x = str(x)
-    if x[0] == '-':
-        a = int('-' + x[-1:0:-1])
+    if x[0] == "-":
+        a = int("-" + x[-1:0:-1])
         if -2147483648 <= a <= 2147483647:
             return a
         else:

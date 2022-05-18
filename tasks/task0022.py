@@ -28,11 +28,11 @@ Constraints:
 
 def solution(s: str) -> bool:
     x = ""
-    diff = ord('a') - ord('A')
+    diff = ord("a") - ord("A")
     for i in s:
-        if ord('a') <= ord(i) <= ord('z') or ord("0") <= ord(i) <= ord("9"):
+        if ord("a") <= ord(i) <= ord("z") or ord("0") <= ord(i) <= ord("9"):
             x += i
-        elif ord('A') <= ord(i) <= ord('Z'):
+        elif ord("A") <= ord(i) <= ord("Z"):
             i = chr(diff + ord(i))
             x += i
     return x == x[::-1]
