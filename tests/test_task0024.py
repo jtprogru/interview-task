@@ -12,5 +12,5 @@ from tasks.task0024 import solution
         ("a", "a", 0)
     ],
 )
-def test_task0022_solution(haystack, needle, result):
+def test_task0024_solution(haystack, needle, result):
     assert solution(haystack, needle) == result
