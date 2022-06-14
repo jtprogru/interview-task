@@ -68,8 +68,8 @@ Constraints:
 def solution(s: str) -> int:
     if s is None or len(s) < 1:
         return 0
-    int_max = 2**31
-    int_min = -2**31-1
+    int_max = 2 ** 31
+    int_min = -(2 ** 31) - 1
     s = s.lstrip()
     i = 0
     is_negative = len(s) > 1 and s[0] == "-"
