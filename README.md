@@ -51,7 +51,7 @@ make test
 - Michael Savin
   - :octocat: [@jtprogru](https://www.github.com/jtprogru)
   - :bird: [@jtprogru](https://www.twitter.com/jtprogru)
-  - :moneybag: [savinmi.ru](https://savinmi.ru)
+  - :moneybag: [s11l.me](https://s11l.me)
 
 
 ## License
