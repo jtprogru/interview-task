@@ -5,8 +5,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/jtprogru/interview-task.svg)](https://github.com/jtprogru/interview-task/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues-raw/jtprogru/interview-task)](https://github.com/jtprogru/interview-task/issues)
 [![GitHub](https://img.shields.io/github/license/jtprogru/interview-task)](https://github.com/jtprogru/interview-task/blob/main/LICENSE)
-[![Donate](https://img.shields.io/badge/-Donate-blue?logo=paypal)](https://paypal.me/jtprog)
-[![Donate](https://img.shields.io/badge/-Donate-blue?logo=patreon)](https://patreon.com/jtprogru)
 
 Задачки с собеседований, LeetCode, CodeWars (решаю их на Python)
 
@@ -30,10 +28,8 @@ make lint
 git clone https://github.com/jtprogru/interview-task.git
 # Переходим в ветку dev
 git checkout dev
-# Создаем файлик с задачкой по аналогии с другими в директории 'tasks'
-touch tasks/task9999.py  # 9999 - порядковый номер файла с задачей
-# Создаем файлик с тестами для задачи
-touch tests/test_task9999.py
+# Добавляем новую задачу вместе с тестами
+make newtask
 # Пишем задачку и тесты для нее
 # После чего прогоняем тесты и линтеры
 make test
@@ -45,14 +41,12 @@ make test
 пожалуйста создай [issues](https://github.com/jtprogru/interview-task/issues) или 
 обратись в Telegram-чат [jtprogru_chat](https://t.me/jtprogru_chat).
 
-
 ## Authors
 
 - Michael Savin
   - :octocat: [@jtprogru](https://www.github.com/jtprogru)
   - :bird: [@jtprogru](https://www.twitter.com/jtprogru)
-  - :moneybag: [s11l.me](https://s11l.me)
-
+  - :moneybag: [savinmi.ru](https://savinmi.ru)
 
 ## License
 
