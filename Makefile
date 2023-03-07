@@ -7,6 +7,10 @@ VENV_DIR=./venv
 VENV_PY3=$(VENV_DIR)/bin/python
 VENV_PIP3=$(VENV_DIR)/bin/pip
 
+LAST_TASK_NUM=$(shell find tasks -name 'task*.py' | sort -V | tail -1 | sed -r 's/tasks\/task([0-9]*).*/\1/' | sed -E 's/^0+//' )
+NEW_TASK_NAME=$(shell printf 'task%04d' $$(( ${LAST_TASK_NUM} + 1)) )
+NEW_TEST_NAME=$(shell printf 'test_task%04d' $$(( ${LAST_TASK_NUM} + 1)) )
+
 .PHONY: venv
 ## Create virtual environment
 venv:
@@ -44,6 +48,12 @@ flake8:
 .PHONY: test
 ## Run all linters and tests
 test: isort black flake8 pytest clean
+
+.PHONY: newtask
+## Add new task with test file
+newtask:
+	touch tasks/${NEW_TASK_NAME}.py
+	touch tests/${NEW_TEST_NAME}.py
 
 .PHONY: lint
 ## Run only linters
