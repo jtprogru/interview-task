@@ -23,6 +23,7 @@ Follow up:
 - What if elements of nums2 are stored on disk, and the memory is limited such that
   you cannot load all elements into the memory at once?
 """
+
 from typing import List
 
 

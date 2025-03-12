@@ -17,6 +17,7 @@ Constraints:
 
 Follow up: Could you minimize the total number of operations done?
 """
+
 from typing import List
 
 

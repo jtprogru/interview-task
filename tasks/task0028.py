@@ -12,6 +12,7 @@ Output: 3
 Input: arr = [1, 1]
 Output: None
 """
+
 from typing import List, Optional
 
 
