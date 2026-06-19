@@ -2,48 +2,47 @@ SHELL := /bin/bash
 .SILENT:
 .DEFAULT_GOAL := help
 
-SYS_PY3=$(shell which python3)
-VENV_DIR=./venv
-VENV_PY3=$(VENV_DIR)/bin/python
-VENV_PIP3=$(VENV_DIR)/bin/pip
+UV=uv
+SRC=tasks/ tests/
 
 LAST_TASK_NUM=$(shell find tasks -name 'task*.py' | sort -V | tail -1 | sed -r 's/tasks\/task([0-9]*).*/\1/' | sed -E 's/^0+//' )
 NEW_TASK_NAME=$(shell printf 'task%04d' $$(( ${LAST_TASK_NUM} + 1)) )
 NEW_TEST_NAME=$(shell printf 'test_task%04d' $$(( ${LAST_TASK_NUM} + 1)) )
 
 .PHONY: venv
-## Create virtual environment
+## Create virtual environment with uv
 venv:
-	$(SYS_PY3) -m venv $(VENV_DIR)
+	$(UV) venv
 
 .PHONY: install-deps
-## Update pip and install all requirements from requirements.txt
-install-deps: requirements.txt
-	$(VENV_PIP3) install --upgrade pip setuptools wheel && $(VENV_PIP3) install -r requirements.txt
+## Sync all dependencies from pyproject.toml/uv.lock
+install-deps: pyproject.toml
+	$(UV) sync
+
+.PHONY: lock
+## Regenerate uv.lock from pyproject.toml
+lock:
+	$(UV) lock
 
 .PHONY: pytest
 ## Run pytest for testing
 pytest: clean-pyc
-	$(VENV_PY3) -m py.test
+	$(UV) run pytest
 
 .PHONY: isort
 ## Run isort linter
 isort:
-	$(VENV_PY3) -m isort tasks/
-	$(VENV_PY3) -m isort tests/
+	$(UV) run isort $(SRC)
 
 .PHONY: black
 ## Run black linter
 black:
-	$(VENV_PY3) -m black tasks/
-	$(VENV_PY3) -m black tests/
+	$(UV) run black $(SRC)
 
 .PHONY: flake8
 ## Run flake8 linter
 flake8:
-	$(VENV_PY3) -m flake8 tasks/
-	$(VENV_PY3) -m flake8 tests/
-
+	$(UV) run flake8 $(SRC)
 
 .PHONY: test
 ## Run all linters and tests
@@ -81,41 +80,10 @@ clean: clean-cache clean-pyc
 .PHONY: help
 ## Show this help message
 help:
-	@echo "$$(tput bold)Available rules:$$(tput sgr0)"
-	@echo
-	@sed -n -e "/^## / { \
-		h; \
-		s/.*//; \
-		:doc" \
-		-e "H; \
-		n; \
-		s/^## //; \
-		t doc" \
-		-e "s/:.*//; \
-		G; \
-		s/\\n## /---/; \
-		s/\\n/ /g; \
-		p; \
-	}" ${MAKEFILE_LIST} \
-	| LC_ALL='C' sort --ignore-case \
-	| awk -F '---' \
-		-v ncol=$$(tput cols) \
-		-v indent=19 \
-		-v col_on="$$(tput setaf 6)" \
-		-v col_off="$$(tput sgr0)" \
-	'{ \
-		printf "%s%*s%s ", col_on, -indent, $$1, col_off; \
-		n = split($$2, words, " "); \
-		line_length = ncol - indent; \
-		for (i = 1; i <= n; i++) { \
-			line_length -= length(words[i]) + 1; \
-			if (line_length <= 0) { \
-				line_length = ncol - indent - length(words[i]) - 1; \
-				printf "\n%*s ", -indent, " "; \
-			} \
-			printf "%s ", words[i]; \
-		} \
-		printf "\n"; \
-	}' \
-	| more $(shell test $(shell uname) == Darwin && echo '--no-init --raw-control-chars')
+	@printf "\033[1mAvailable rules:\033[0m\n\n"
+	@awk 'BEGIN { FS = ":" } \
+		/^## / { doc = substr($$0, 4); next } \
+		/^[a-zA-Z0-9_-]+:/ { if (doc) printf "  \033[36m%-18s\033[0m %s\n", $$1, doc; doc = "" } \
+		{ doc = "" }' $(MAKEFILE_LIST) \
+	| LC_ALL='C' sort --ignore-case
 
