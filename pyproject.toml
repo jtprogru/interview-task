@@ -3,7 +3,7 @@ name = "interview-task"
 version = "0.1.0"
 description = "Задачки с собеседований, LeetCode, CodeWars (решаю их на Python)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.14"
 license = { text = "MIT" }
 authors = [{ name = "Mikhail Savin", email = "jtprogru@gmail.com" }]
 dependencies = []
@@ -16,7 +16,7 @@ package = false
 
 [tool.black]
 line-length = 120
-target-version = ['py38', 'py39']
+target-version = ['py314']
 include = '\.pyi?$'
 
 [tool.isort]
