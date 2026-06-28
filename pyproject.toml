@@ -3,25 +3,20 @@ name = "interview-task"
 version = "0.1.0"
 description = "Задачки с собеседований, LeetCode, CodeWars (решаю их на Python)"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.14"
 license = { text = "MIT" }
-authors = [{ name = "Michael Savin", email = "jtprogru@gmail.com" }]
+authors = [{ name = "Mikhail Savin", email = "jtprogru@gmail.com" }]
 dependencies = []
 
 [dependency-groups]
-dev = [
-    "black==25.1.0",
-    "flake8==7.1.2",
-    "isort==6.0.1",
-    "pytest==8.3.5",
-]
+dev = ["black==26.3.1", "flake8==7.1.2", "isort==6.0.1", "pytest==9.0.3"]
 
 [tool.uv]
 package = false
 
 [tool.black]
 line-length = 120
-target-version = ['py38', 'py39']
+target-version = ['py314']
 include = '\.pyi?$'
 
 [tool.isort]
