@@ -5,16 +5,11 @@ description = "Задачки с собеседований, LeetCode, CodeWars 
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "Michael Savin", email = "jtprogru@gmail.com" }]
+authors = [{ name = "Mikhail Savin", email = "jtprogru@gmail.com" }]
 dependencies = []
 
 [dependency-groups]
-dev = [
-    "black==26.3.1",
-    "flake8==7.1.2",
-    "isort==6.0.1",
-    "pytest==9.0.3",
-]
+dev = ["black==26.3.1", "flake8==7.1.2", "isort==6.0.1", "pytest==9.0.3"]
 
 [tool.uv]
 package = false
